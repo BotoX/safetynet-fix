@@ -85,7 +85,7 @@ private:
 
     void preSpecialize(const std::string& process) {
         // Only touch GMS
-        if (process.rfind("com.google.android.gms", 0) != 0) {
+        if (process.rfind("com.google.android.gms", 0) != 0 && process != "at.gv.oe.app") {
             api->setOption(zygisk::DLCLOSE_MODULE_LIBRARY);
             return;
         }
@@ -97,7 +97,7 @@ private:
         // spoof the model in that process. Leaving other processes alone fixes various issues
         // caused by model detection and flag provisioning, such as broken weather with the new
         // smartspace on Android 12.
-        if (process == "com.google.android.gms.unstable") {
+        if (process == "com.google.android.gms.unstable" || process == "at.gv.oe.app") {
             // Load the payload, but don't inject it yet until after specialization
             // Otherwise, specialization fails if any code from the payload still happens to be
             // running

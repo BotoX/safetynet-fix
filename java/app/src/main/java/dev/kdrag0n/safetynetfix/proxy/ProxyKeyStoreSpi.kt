@@ -35,6 +35,7 @@ class ProxyKeyStoreSpi private constructor(
         // android.os.Binder.execTransact(Binder.java:1143)
         logDebug("Stack trace element: $it")
         it.className.contains("DroidGuard", ignoreCase = true)
+        it.methodName.equals("performCapabilityAndIntegrityCheck")
     }
 
     override fun engineGetCertificateChain(alias: String?): Array<Certificate>? {

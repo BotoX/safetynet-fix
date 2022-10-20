@@ -3,4 +3,5 @@
 # Remove Play Services from the Magisk Denylist when set to enforcing.
 if magisk --denylist status; then
 	magisk --denylist rm com.google.android.gms
+	magisk --denylist rm at.gv.oe.app
 fi
